@@ -1,76 +1,60 @@
 #!/usr/bin/python3
-''' Module for the Square definition'''
+"""
+This is the "Square"  module.
+
+This module provides a simple Square class with initialize size.
+Defaults size to 0. Raise error on invalid size inputs.
+Attribute position which takes a default (0, 0) tuple.
+Methods Getter and Setter properties for size and position.
+Method area returns size of area of the square.
+Method my_print prints the square using "#", moved over left and top using
+position tuple.
+"""
 
 
 class Square:
-    ''' Defines a new square '''
+    """A class that defines a square by size, which defaults 0.
+    Also defines position using a tuple, which defaults (0, 0).
+    Square can also get area, and print square using '#'.
+    When printing, using position, offset on top and left.
+    """
     def __init__(self, size=0, position=(0, 0)):
-        ''' Constructor.
-        Args:
-            size(int): width and height of the Square
-            position(int, int): position of the square created
-        '''
-        self.__size = size
-        if isinstance(position, tuple):
-            self.__position = position
-        else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
-        ''' Retrieves the private instance attribute size '''
         return self.__size
 
     @size.setter
-    def size(self, value):
-        ''' Sets the Size attribute.
-        Args:
-            value:size of new value of the square
-        '''
-        if not isinstance(value, int):
+    def size(self, size):
+        if type(size) != int:
             raise TypeError("size must be an integer")
-        if value < 0:
+        if size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+        self.__size = size
 
     @property
     def position(self):
-        ''' Retrieves the position of the square '''
         return self.__position
 
     @position.setter
     def position(self, value):
-        ''' Sets the Positin attribute.
-        Args:
-            value: new value as a tuple with 2 elements
-        '''
-        lg = len(value)
-        if (not isinstance(value, tuple) or
-                lg != 2 or
-                not all(isinstance(nm, int) for nm in value)
-                or not all(nm >= 0 for nm in value)):
+        if type(value) != tuple or len(value) != 2 or \
+           not all([type(i) == int for i in value]) or \
+           not all([i >= 0 for i in value]):
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
-    # moved area to after setter so that it uses updated values
-
     def area(self):
-        ''' Calculates the area of Object Square.
-        Return:
-            the current square area
-        '''
-        return (self.__size * self.__size)
+        return self.__size * self.__size
 
     def my_print(self):
-        ''' Prints in Stdout the square with the character # '''
-        if self.__size == 0:
-            print()
-            return
-        for n in range(0, self.__position[1]):
-            print(" ")
-        for i in range(0, self.__size):
-            for k in range(0, self.__position[0]):
-                print(" ", end="")
-            for j in range(0, self.__size):
-                print("#", end="")
+        if self.__size is 0:
             print("")
+            return
+        for i in range(self.__position[1]):
+            print("")
+        for i in range(self.__size):
+            print(" " * self.__position[0], end="")
+            print("#" * self.__size)
