@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+''' This is the test module for say_my_name() '''
+
+============
+say_my_name
+============
+
+The function takes two parameters (first and last name).
+If the input is not a string, it an error.
+``say_my_name(first_name, last_name="")``
+
+
+``say_my_name()`` returns full name or just first name if no last name is given.
+
+::
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+    >>> say_my_name("Michael", "Jackson")
+    My name is Michael Jackson
+
+    >>> say_my_name("Michael")
+    My name is Michael 
+
+    >>> say_my_name("Michael", 123)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name(5, "Cole")
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name(5, 6)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
+
+    >>> say_my_name()
+    Traceback (most recent call last):
+        ...
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+    >>> say_my_name("Tiffany", ["Bradford", "Khoza"])
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name("Tiffany", 3.92)
+    Traceback (most recent call last):
+        ...
+    TypeError: last_name must be a string
+
+    >>> say_my_name("", "Kamuzu")
+    My name is  Kamuzu
+
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+        ...
+    TypeError: first_name must be a string
