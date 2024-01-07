@@ -1,0 +1,67 @@
+#!/usr/bin/python3
+''' This is the test module for add_integer() '''
+
+============
+add_integer
+============
+
+The function just had two integers.
+If the input is a float, it converts it to an integer before adding it.
+If the imput is anything else, it returns a typeError with "{a/b} must be an integer"
+``add_integer(a, b=98)``
+
+
+``add_integer()`` returns the sum of its arguments.
+that value is the same as using the ``+`` operator.
+
+::
+
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+    >>> add_integer(1, 3)
+    4
+
+    >>> add_integer(-2, -6)
+    -8
+
+    >>> add_integer(5, -10)
+    -5
+
+    >>> add_integer(5.0, 6)
+    11
+
+    >>> add_integer(5.3, 1)
+    6
+
+    >>> add_integer(0, )
+    98
+
+    >>> add_integer("Yellow", 1)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+
+    >>> add_integer(3, "4")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+    >>> add_integer(0, [1, 3])
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+        ...
+    OverflowError: cannot convert float infinity to integer
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+        ...
+    ValueError: cannot convert float NaN to integer
